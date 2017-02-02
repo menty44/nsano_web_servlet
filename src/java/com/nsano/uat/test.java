@@ -15,7 +15,9 @@ import java.security.NoSuchAlgorithmException;
 public class test {
     
     public static void main(String[] args) throws IOException, NoSuchAlgorithmException {
+        //declare and inialize credit class
         credit cred = new credit();
+        //call the class and get the method
         cred.sendPOST();
     }
     
