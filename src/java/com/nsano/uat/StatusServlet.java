@@ -42,10 +42,10 @@ import org.json.JSONObject;
  * @author Oluoch
  *
  */
-@WebServlet(name = "Credit", urlPatterns = {"/Credit"})
-public class Imtservlet extends HttpServlet {
+@WebServlet(name = "Status", urlPatterns = {"/Status"})
+public class StatusServlet extends HttpServlet {
 
-    credit cred = new credit();
+    TransactionStatus status = new TransactionStatus();
     //private Payment2 remittoairtel;
 
     private String statuscode = "00032";
@@ -192,7 +192,7 @@ public class Imtservlet extends HttpServlet {
 
         //assign the remit url from properties.config
         //String processtransaction = airtelbalance.AirtelBalance( nickname, username, password);
-        String processtransaction = cred.sendPOST();
+        String processtransaction = cred.;
         //capture the switch respoinse.
 
         System.out.println(processtransaction);

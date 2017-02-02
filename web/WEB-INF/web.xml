@@ -4,9 +4,17 @@
         <servlet-name>Imtservlet</servlet-name>
         <servlet-class>com.nsano.uat.Imtservlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>StatusServlet</servlet-name>
+        <servlet-class>com.nsano.uat.StatusServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Imtservlet</servlet-name>
         <url-pattern>/Imtservlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StatusServlet</servlet-name>
+        <url-pattern>/StatusServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
