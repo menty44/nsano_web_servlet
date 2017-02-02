@@ -6,6 +6,7 @@
 package com.nsano.uat;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 
 /**
  *
@@ -13,7 +14,7 @@ import java.io.IOException;
  */
 public class test {
     
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, NoSuchAlgorithmException {
         credit cred = new credit();
         cred.sendPOST();
     }

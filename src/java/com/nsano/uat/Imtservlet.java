@@ -30,6 +30,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 //import com.impala.balance.AMBalance;
 import com.nsano.uat.credit;
+import java.security.NoSuchAlgorithmException;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -86,6 +87,8 @@ public class Imtservlet extends HttpServlet {
             out.write(moneytransfer(request).getBytes());
         } catch (JSONException ex) {
             Logger.getLogger(IMTCredit.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(Imtservlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         out.flush();
         out.close();
@@ -97,7 +100,7 @@ public class Imtservlet extends HttpServlet {
      * @return
      * @throws IOException
      */
-    private String moneytransfer(HttpServletRequest request) throws IOException, JSONException {
+    private String moneytransfer(HttpServletRequest request) throws IOException, JSONException, NoSuchAlgorithmException {
 
         // joined json string
         String join = "";

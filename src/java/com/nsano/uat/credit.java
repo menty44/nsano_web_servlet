@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import static javafx.css.StyleOrigin.USER_AGENT;
 
 /**
@@ -19,7 +21,7 @@ import static javafx.css.StyleOrigin.USER_AGENT;
  */
 public class credit {
     
-    public String sendPOST() throws IOException{
+    public String sendPOST() throws IOException, NoSuchAlgorithmException{
        String url = "http://portals.nsano.com:9000/api/fusion_dev/thirdParty/IMT/";
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -28,17 +30,25 @@ public class credit {
         con.setRequestMethod("POST");
         //con.setRequestProperty("User-Agent", USER_AGENT);
         con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
+        
+        
+            SecureRandom prng = SecureRandom.getInstance("SHA1PRNG");
+            String randomNum = new Integer(prng.nextInt()).toString();
+
+            System.out.println("IMPALAPAY" + randomNum);
+            
+        
 
         String urlParameters = "tag=3rdpartycredit&"
                 + "apikey=d7dd4c4982494701a8491c5180fe2bea&"
-                + "refID=cccccsTRANS12m345678&"
-                + "sender=PeterAlexandre&"
+                + "refID=IMPALA"+ randomNum +"&"
+                + "sender=ImpalaPay Kenya&"
                 + "sender_country=GH&"
                 + "receiver=KofiSarpong&"
-                + "receiver_msisdn=233276819324&"
+                + "receiver_msisdn=233266000128&"
                 + "receiver_country=GH&"
-                + "amount=0.80&"
-                + "mno=TIGO";
+                + "amount=0.10&"
+                + "mno=AIRTEL";
 
         // Send post request
         con.setDoOutput(true);
@@ -60,12 +70,13 @@ public class credit {
         while ((inputLine = in.readLine()) != null) {
             response.append(inputLine);
         }
+        
         in.close();
 
         //print result
         System.out.println(response.toString());
 
-//			JSONParser parser = new JSONParser();
+//			JSONParser parser    = new JSONParser();
 //
 //	        try {
 //
@@ -95,6 +106,7 @@ public class credit {
 //	        } catch (ParseException e) {
 //	            e.printStackTrace();
 //	        } 
+
         return response.toString();
     }
     

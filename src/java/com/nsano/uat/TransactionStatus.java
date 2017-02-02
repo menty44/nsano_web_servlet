@@ -57,7 +57,7 @@ public class TransactionStatus {
 
         String urlParameters = "tag=checkTransactionStatus&"
                 + "apikey=d7dd4c4982494701a8491c5180fe2bea&"
-                + "refID=TRANS12345678";
+                + "refID=IMPALA1422167935";
 
         // Send post request
         con.setDoOutput(true);
