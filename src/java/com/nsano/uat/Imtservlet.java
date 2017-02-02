@@ -139,56 +139,56 @@ public class Imtservlet extends HttpServlet {
         //Gson g = new Gson();
         Map<String, String> expected = new HashMap<>();
 
-//        try {
-//            // parse the JSon string
-//            //referenceid, customermsisdn, nickname,amount, batchref, username, password, narrative
-//
-//            root = new JsonParser().parse(join);
-//
-//            tag = root.getAsJsonObject().get("tag").getAsString();
-//
-//            apikey = root.getAsJsonObject().get("apikey").getAsString();
-//            refID = root.getAsJsonObject().get("refID").getAsString();
-//
-//            sender = root.getAsJsonObject().get("sender").getAsString();
-//            sender_country = root.getAsJsonObject().get("sender_country").getAsString();
-//
-//            receiver = root.getAsJsonObject().get("receiver").getAsString();
-//            receiver_msisdn = root.getAsJsonObject().get("receiver_msisdn").getAsString();
-//
-//            receiver_country = root.getAsJsonObject().get("receiver_country").getAsString();
-//            amount = root.getAsJsonObject().get("amount").getAsString();
-//
-//            mno = root.getAsJsonObject().get("mno").getAsString();
-//
-//        } catch (Exception e) {
-//
-//            expected.put("command_status", "COMMANDSTATUS_INVALID_PARAMETERS");
-//            String jsonResult = g.toJson(expected);
-//            System.out.println(e);
-//
-//            return jsonResult;
-//        }
+        try {
+            // parse the JSon string
+            //referenceid, customermsisdn, nickname,amount, batchref, username, password, narrative
 
-        // check for the presence of all required parameters
-//        if (StringUtils.isBlank(tag)
-//                || StringUtils.isBlank(apikey)
-//                || StringUtils.isBlank(refID)
-//                || StringUtils.isBlank(sender)
-//                || StringUtils.isBlank(sender_country)
-//                || StringUtils.isBlank(receiver)
-//                || StringUtils.isBlank(receiver_msisdn)
-//                || StringUtils.isBlank(receiver_country)
-//                || StringUtils.isBlank(amount)
-//                || StringUtils.isBlank(mno)) {
-//
-//            //expected.put("username", username);
-//            expected.put("status_code", statuscode);
-//            expected.put("status_description", Statusdescription);
-//            String jsonResult = g.toJson(expected);
-//
-//            return jsonResult;
-//        }
+            root = new JsonParser().parse(join);
+
+            tag = root.getAsJsonObject().get("tag").getAsString();
+
+            apikey = root.getAsJsonObject().get("apikey").getAsString();
+            refID = root.getAsJsonObject().get("refID").getAsString();
+
+            sender = root.getAsJsonObject().get("sender").getAsString();
+            sender_country = root.getAsJsonObject().get("sender_country").getAsString();
+
+            receiver = root.getAsJsonObject().get("receiver").getAsString();
+            receiver_msisdn = root.getAsJsonObject().get("receiver_msisdn").getAsString();
+
+            receiver_country = root.getAsJsonObject().get("receiver_country").getAsString();
+            amount = root.getAsJsonObject().get("amount").getAsString();
+
+            mno = root.getAsJsonObject().get("mno").getAsString();
+
+        } catch (Exception e) {
+
+            expected.put("command_status", "COMMANDSTATUS_INVALID_PARAMETERS");
+            String jsonResult = g.toJson(expected);
+            System.out.println(e);
+
+            return jsonResult;
+        }
+
+         //check for the presence of all required parameters
+        if (StringUtils.isBlank(tag)
+                || StringUtils.isBlank(apikey)
+                || StringUtils.isBlank(refID)
+                || StringUtils.isBlank(sender)
+                || StringUtils.isBlank(sender_country)
+                || StringUtils.isBlank(receiver)
+                || StringUtils.isBlank(receiver_msisdn)
+                || StringUtils.isBlank(receiver_country)
+                || StringUtils.isBlank(amount)
+                || StringUtils.isBlank(mno)) {
+
+            //expected.put("username", username);
+            expected.put("status_code", statuscode);
+            expected.put("status_description", Statusdescription);
+            String jsonResult = g.toJson(expected);
+
+            return jsonResult;
+        }
 
         //assign the remit url from properties.config
         //String processtransaction = airtelbalance.AirtelBalance( nickname, username, password);

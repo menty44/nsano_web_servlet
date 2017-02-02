@@ -28,15 +28,15 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
-//import com.impala.balance.AMBalance;
-import com.nsano.uat.credit;
+//import com.google.gson.JsonParser;
 import java.security.NoSuchAlgorithmException;
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.annotation.WebServlet;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.json.simple.JSONArray;
+import org.json.simple.parser.ParseException;
 
 /**
  * @author Oluoch
@@ -139,56 +139,56 @@ public class StatusServlet extends HttpServlet {
         //Gson g = new Gson();
         Map<String, String> expected = new HashMap<>();
 
-//        try {
-//            // parse the JSon string
-//            //referenceid, customermsisdn, nickname,amount, batchref, username, password, narrative
-//
-//            root = new JsonParser().parse(join);
-//
-//            tag = root.getAsJsonObject().get("tag").getAsString();
-//
-//            apikey = root.getAsJsonObject().get("apikey").getAsString();
-//            refID = root.getAsJsonObject().get("refID").getAsString();
-//
-//            sender = root.getAsJsonObject().get("sender").getAsString();
-//            sender_country = root.getAsJsonObject().get("sender_country").getAsString();
-//
-//            receiver = root.getAsJsonObject().get("receiver").getAsString();
-//            receiver_msisdn = root.getAsJsonObject().get("receiver_msisdn").getAsString();
-//
-//            receiver_country = root.getAsJsonObject().get("receiver_country").getAsString();
-//            amount = root.getAsJsonObject().get("amount").getAsString();
-//
-//            mno = root.getAsJsonObject().get("mno").getAsString();
-//
-//        } catch (Exception e) {
-//
-//            expected.put("command_status", "COMMANDSTATUS_INVALID_PARAMETERS");
-//            String jsonResult = g.toJson(expected);
-//            System.out.println(e);
-//
-//            return jsonResult;
-//        }
+        try {
+            // parse the JSon string
+            //referenceid, customermsisdn, nickname,amount, batchref, username, password, narrative
 
-        // check for the presence of all required parameters
-//        if (StringUtils.isBlank(tag)
-//                || StringUtils.isBlank(apikey)
-//                || StringUtils.isBlank(refID)
-//                || StringUtils.isBlank(sender)
-//                || StringUtils.isBlank(sender_country)
-//                || StringUtils.isBlank(receiver)
-//                || StringUtils.isBlank(receiver_msisdn)
-//                || StringUtils.isBlank(receiver_country)
-//                || StringUtils.isBlank(amount)
-//                || StringUtils.isBlank(mno)) {
-//
-//            //expected.put("username", username);
-//            expected.put("status_code", statuscode);
-//            expected.put("status_description", Statusdescription);
-//            String jsonResult = g.toJson(expected);
-//
-//            return jsonResult;
-//        }
+            root = new JsonParser().parse(join);
+
+            tag = root.getAsJsonObject().get("tag").getAsString();
+
+            apikey = root.getAsJsonObject().get("apikey").getAsString();
+            refID = root.getAsJsonObject().get("refID").getAsString();
+
+            sender = root.getAsJsonObject().get("sender").getAsString();
+            sender_country = root.getAsJsonObject().get("sender_country").getAsString();
+
+            receiver = root.getAsJsonObject().get("receiver").getAsString();
+            receiver_msisdn = root.getAsJsonObject().get("receiver_msisdn").getAsString();
+
+            receiver_country = root.getAsJsonObject().get("receiver_country").getAsString();
+            amount = root.getAsJsonObject().get("amount").getAsString();
+
+            mno = root.getAsJsonObject().get("mno").getAsString();
+
+        } catch (Exception e) {
+
+            expected.put("command_status", "COMMANDSTATUS_INVALID_PARAMETERS");
+            String jsonResult = g.toJson(expected);
+            System.out.println(e);
+
+            return jsonResult;
+        }
+
+         //check for the presence of all required parameters
+        if (StringUtils.isBlank(tag)
+                || StringUtils.isBlank(apikey)
+                || StringUtils.isBlank(refID)
+                || StringUtils.isBlank(sender)
+                || StringUtils.isBlank(sender_country)
+                || StringUtils.isBlank(receiver)
+                || StringUtils.isBlank(receiver_msisdn)
+                || StringUtils.isBlank(receiver_country)
+                || StringUtils.isBlank(amount)
+                || StringUtils.isBlank(mno)) {
+
+            //expected.put("username", username);
+            expected.put("status_code", statuscode);
+            expected.put("status_description", Statusdescription);
+            String jsonResult = g.toJson(expected);
+
+            return jsonResult;
+        }
 
         //assign the remit url from properties.config
         //String processtransaction = airtelbalance.AirtelBalance( nickname, username, password);
@@ -204,8 +204,16 @@ public class StatusServlet extends HttpServlet {
         //exctract a specific json element from the object(status_code)
         //Double code = roots.getAsJsonObject().get("code").getAsDouble();
         Number code = roots.getAsJsonObject().get("code").getAsNumber();
+         System.out.println("####################################################################");
+         System.out.println(code);
+         System.out.println("####################################################################");
         String msg = roots.getAsJsonObject().get("msg").getAsString();
-        //String data = rootsone.getAsJsonObject().get("error_type").getAsString();
+        System.out.println(msg);
+        System.out.println("#####################################################################");
+        //String d                                                                                          ata = rootsone.getAsJsonObject().get("error_type").getAsString();
+        
+         // loop array
+         
 
         //add 
         //expected.put("username", username);
@@ -215,15 +223,17 @@ public class StatusServlet extends HttpServlet {
 
         String jsonResult = g.toJson(expected);
         
-        if (code.toString() == "00") {
-            
-            System.out.println("success");
-            
-        }else{
+        if (code.toString() == "01") {
             
             System.out.println("fail");
             
+        }else{
+            
+            System.out.println("success");
+            
         }
+        
+        
 
         return jsonResult;
 
