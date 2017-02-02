@@ -32,23 +32,14 @@ public class status {
         con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
         
         
-            SecureRandom prng = SecureRandom.getInstance("SHA1PRNG");
-            String randomNum = new Integer(prng.nextInt()).toString();
+//            SecureRandom prng = SecureRandom.getInstance("SHA1PRNG");
+//            String randomNum = new Integer(prng.nextInt()).toString();
+//
+//            System.out.println("IMPALAPAY" + randomNum);  
 
-            System.out.println("IMPALAPAY" + randomNum);
-            
-        
-
-        String urlParameters = "tag=3rdpartycredit&"
+        String urlParameters = "tag=checkTransactionStatus&"
                 + "apikey=d7dd4c4982494701a8491c5180fe2bea&"
-                + "refID=IMPALA"+ randomNum +"&"
-                + "sender=ImpalaPay Kenya&"
-                + "sender_country=GH&"
-                + "receiver=KofiSarpong&"
-                + "receiver_msisdn=233266000128&"
-                + "receiver_country=GH&"
-                + "amount=0.10&"
-                + "mno=AIRTEL";
+                + "refID=IMPALA1165124611";
 
         // Send post request
         con.setDoOutput(true);

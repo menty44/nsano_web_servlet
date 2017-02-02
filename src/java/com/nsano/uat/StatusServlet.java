@@ -45,7 +45,7 @@ import org.json.JSONObject;
 @WebServlet(name = "Status", urlPatterns = {"/Status"})
 public class StatusServlet extends HttpServlet {
 
-    TransactionStatus status = new TransactionStatus();
+    status st = new status();
     //private Payment2 remittoairtel;
 
     private String statuscode = "00032";
@@ -192,7 +192,7 @@ public class StatusServlet extends HttpServlet {
 
         //assign the remit url from properties.config
         //String processtransaction = airtelbalance.AirtelBalance( nickname, username, password);
-        String processtransaction = cred.;
+        String processtransaction = st.sendPOST();
         //capture the switch respoinse.
 
         System.out.println(processtransaction);
